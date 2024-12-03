@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-envelope-fill me-2"></i>Email Sender Pro</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Configuration Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-gear-fill me-2"></i>Email Configuration</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="configForm">
+                            <div class="mb-3">
+                                <label for="senderEmail" class="form-label">Sender Email</label>
+                                <input type="email" class="form-control" id="senderEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="senderPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="senderPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subjectTemplate" class="form-label">Subject Template</label>
+                                <input type="text" class="form-control" id="subjectTemplate" 
+                                       placeholder="e.g., Hello {name}, regarding {designation} position" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bodyTemplate" class="form-label">Email Body Template</label>
+                                <textarea class="form-control" id="bodyTemplate" rows="4" 
+                                          placeholder="Dear {name}, As a {designation}..." required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts Upload Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i>Contact Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="contactsForm">
+                            <div class="mb-3">
+                                <label for="contactsFile" class="form-label">Upload Contacts (CSV/Excel)</label>
+                                <input type="file" class="form-control" id="contactsFile" accept=".csv,.xlsx,.xls" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="attachment" class="form-label">Email Attachment (Optional)</label>
+                                <input type="file" class="form-control" id="attachment">
+                            </div>
+                        </form>
+                        <div id="previewSection" class="mt-3 d-none">
+                            <h6>Contacts Preview</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Designation</th>
+                                            <th>Email</th>
+                                            <th>LinkedIn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="previewTable"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview and Send Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-envelope-paper-fill me-2"></i>Preview & Send</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button id="previewBtn" class="btn btn-outline-primary w-100 mb-2">
+                                    <i class="bi bi-eye-fill me-2"></i>Preview Email
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button id="sendBtn" class="btn btn-primary w-100 mb-2">
+                                    <i class="bi bi-send-fill me-2"></i>Send Emails
+                                </button>
+                            </div>
+                        </div>
+                        <div id="emailPreview" class="mt-3 d-none">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Email Preview</h6>
+                                    <hr>
+                                    <div id="previewContent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Modal -->
+    <div class="modal fade" id="progressModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sending Emails</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+                    </div>
+                    <div id="progressText" class="text-center mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>

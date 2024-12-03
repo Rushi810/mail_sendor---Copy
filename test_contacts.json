@@ -1,0 +1,16 @@
+{
+    "contacts": [
+        {
+            "Name": "Test User 1",
+            "Email": "your.email@gmail.com",
+            "Designation": "Software Engineer",
+            "LinkedIn_ID": "testuser1"
+        },
+        {
+            "Name": "Test User 2",
+            "Email": "your.email@gmail.com",
+            "Designation": "Product Manager",
+            "LinkedIn_ID": "testuser2"
+        }
+    ]
+}
